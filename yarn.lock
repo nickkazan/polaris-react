@@ -273,7 +273,7 @@
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.3.tgz#b1aece3174beb101375ace13c6651b7049648b79"
   integrity sha512-2KJMDOkZT+dmoHTlgsU6F0Hr0mMhUR26cXRcOnzGRV24bHmKIsp06je+4DG+ozsWxbHHmtOBCJBiYE1x1yS+eg==
 
-"@shopify/images@^1.1.4":
+"@shopify/images@^1.1.4", "@shopify/images@^1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.5.tgz#f7ae5d5801b4550085480825ceda66420d9ff700"
   integrity sha512-DIPOT6ACpmsqYwvh0TQ48PgmZFceuoV8imrxfmCK6HD+zWcE6TWfunKaGEo0DkkdsS+6guGd/aJXe9m+dyBvdQ==
@@ -315,6 +315,19 @@
     aws-sdk "2.6.8"
     mime-types "2.1.12"
     request "2.78.0"
+
+"@shopify/polaris-icons@^1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-1.0.0-beta.2.tgz#ba813d8bb1c5420a7c95b2ab9311ae764875e877"
+  integrity sha512-zyoHByq2asWaECrpRQiiOs2qwhRxEnhWB99oVTaO5L7izI/qxYxt7M6ud6RwC7gqtkcjuBBCgwT4wXKNbGkd2A==
+  dependencies:
+    "@shopify/images" "^1.1.5"
+    ajv "^6.5.5"
+    glob "^7.1.3"
+    js-yaml "^3.12.0"
+    rollup "^0.66.5"
+    rollup-pluginutils "^2.3.3"
+    svgo "^1.1.1"
 
 "@shopify/polaris-tokens@^1.2.0":
   version "1.2.0"
@@ -505,7 +518,7 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
-"@types/estree@*":
+"@types/estree@*", "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
@@ -934,7 +947,7 @@ ajv-keywords@^3.1.0:
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
   integrity sha1-6GuBnGAs+IIa1jdBNpjx3sAhhHo=
 
-ajv@6.5.5:
+ajv@6.5.5, ajv@^6.5.5:
   version "6.5.5"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.5.tgz#cf97cdade71c6399a92c6d6c4177381291b781a1"
   integrity sha512-7q7gtRQDJSyuEHjuVgHoUa2VuemFiCMrfQc9Tc08XTAc4Zj/5U1buQJ0HU6i7fKjXU09SVgSmxa4sLvuvS8Iyg==
@@ -5744,6 +5757,11 @@ estree-walker@^0.5.0:
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.5.0.tgz#aae3b57c42deb8010e349c892462f0e71c5dd1aa"
   integrity sha512-/bEAy+yKAZQrEWUhGmS3H9XpGqSDBtRzX0I2PgMw9kA2n1jN22uV5B5p7MFdZdvWdXCRJztXAfx6ZeRfgkEETg==
 
+estree-walker@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.5.2.tgz#d3850be7529c9580d815600b53126515e146dd39"
+  integrity sha512-XpCnW/AE10ws/kDAs37cngSkvgIR8aN3G0MS85m7dUpuK2EREo9VJ00uvw6Dg/hXEpfsE1I1TvJOJr+Z+TL+ig==
+
 esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
@@ -6810,7 +6828,7 @@ glob-to-regexp@^0.4.0:
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.0.tgz#49bd677b1671022bd10921c3788f23cdebf9c7e6"
   integrity sha512-fyPCII4vn9Gvjq2U/oDAfP433aiE64cyP/CJjRJcpVGjqqNdioUYn9+r0cSzT1XPwmGAHuTT7iv+rQT8u/YHKQ==
 
-glob@7.1.3:
+glob@7.1.3, glob@^7.1.3:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
   integrity sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==
@@ -13316,6 +13334,14 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
+rollup-pluginutils@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.3.3.tgz#3aad9b1eb3e7fe8262820818840bf091e5ae6794"
+  integrity sha512-2XZwja7b6P5q4RZ5FhyX1+f46xi1Z3qBKigLRZ6VTZjwbN0K1IFGMlwm06Uu0Emcre2Z63l77nq/pzn+KxIEoA==
+  dependencies:
+    estree-walker "^0.5.2"
+    micromatch "^2.3.11"
+
 rollup@^0.50.0:
   version "0.50.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.50.0.tgz#4c158f4e780e6cb33ff0dbfc184a52cc58cd5f3b"
@@ -13325,6 +13351,14 @@ rollup@^0.51.0:
   version "0.51.8"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.51.8.tgz#58bd0b642885f4770b5f93cc64f14e4233c2236d"
   integrity sha512-e7FwWxqb4vhdonmwRH06nqC9wR6h1kZojK2D+lN1xjiB8FDtAKgy7o+r8fCXVzQZ1ZCdcVlls3mTq5g6u38Jew==
+
+rollup@^0.66.5:
+  version "0.66.6"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.66.6.tgz#ce7d6185beb7acea644ce220c25e71ae03275482"
+  integrity sha512-J7/SWanrcb83vfIHqa8+aVVGzy457GcjA6GVZEnD0x2u4OnOd0Q1pCrEoNe8yLwM6z6LZP02zBT2uW0yh5TqOw==
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "*"
 
 router-ips@^1.0.0:
   version "1.0.0"
