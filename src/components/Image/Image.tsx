@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '../../utilities/other';
 
 export interface SourceSet {
   source: string;
@@ -16,70 +15,28 @@ export interface Props extends React.HTMLProps<HTMLImageElement> {
   onError?(): void;
 }
 
-export interface State {
-  imageLoaded: boolean;
-}
+export default function Image({
+  sourceSet,
+  source,
+  crossOrigin,
+  ...rest
+}: Props) {
+  const finalSourceSet = sourceSet
+    ? sourceSet
+        .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)
+        .join(',')
+    : null;
 
-export default class Image extends React.PureComponent<Props, never> {
-  // state: State = {
-  //   imageLoaded: false,
-  // };
-
-  private imgRef = React.createRef<HTMLImageElement>();
-
-  componentDidMount() {
-    const img = this.imgRef.current;
-    if (!img) {
-      return;
-    }
-    const {onLoad = noop, onError = noop, source} = this.props;
-    img.setAttribute('src', source);
-    img.addEventListener('load', onLoad);
-    img.addEventListener('error', onError);
-  }
-
-  componentWillUnmount() {
-    const img = this.imgRef.current;
-    if (!img) {
-      return;
-    }
-    const {onLoad = noop, onError = noop} = this.props;
-    img.removeEventListener('load', onLoad);
-    img.removeEventListener('error', onError);
-  }
-
-  render() {
-    const {
-      sourceSet,
-      source,
-      crossOrigin,
-      onLoad = noop,
-      onError = noop,
-      ...rest
-    } = this.props;
-    const finalSourceSet = sourceSet
-      ? sourceSet
-          .map(
-            ({source: subSource, descriptor}) => `${subSource} ${descriptor}`,
-          )
-          .join(',')
-      : null;
-
-    return finalSourceSet ? (
-      // eslint-disable-next-line jsx-a11y/alt-text
-      <img
-        ref={this.imgRef}
-        srcSet={finalSourceSet}
-        crossOrigin={crossOrigin as CrossOrigin}
-        {...rest}
-      />
-    ) : (
-      // eslint-disable-next-line jsx-a11y/alt-text
-      <img
-        ref={this.imgRef}
-        crossOrigin={crossOrigin as CrossOrigin}
-        {...rest}
-      />
-    );
-  }
+  return finalSourceSet ? (
+    // eslint-disable-next-line jsx-a11y/alt-text
+    <img
+      src={source}
+      srcSet={finalSourceSet}
+      crossOrigin={crossOrigin as CrossOrigin}
+      {...rest}
+    />
+  ) : (
+    // eslint-disable-next-line jsx-a11y/alt-text
+    <img src={source} {...rest} crossOrigin={crossOrigin as CrossOrigin} />
+  );
 }
