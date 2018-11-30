@@ -38,6 +38,7 @@ export interface Props {
 export interface State {
   hasError: boolean;
   hasLoaded: boolean;
+  hasMounted: boolean;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -46,7 +47,12 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
   state: State = {
     hasError: false,
     hasLoaded: false,
+    hasMounted: false,
   };
+
+  componentDidMount() {
+    this.setState({hasMounted: true});
+  }
 
   componentDidUpdate({source: previousSource}: Props) {
     const {source} = this.props;
@@ -69,15 +75,7 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    if (typeof document === 'undefined') {
-      const className = classNames(
-        styles.Avatar,
-        size && styles[variationName('size', size)],
-      );
-      return <span className={className} />;
-    }
-
-    const {hasError, hasLoaded} = this.state;
+    const {hasError, hasLoaded, hasMounted} = this.state;
 
     const hasImage = (source || customer) && !hasError;
 
@@ -113,16 +111,17 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
       hasImage && styles.hasImage,
     );
 
-    const imageMarkUp = finalSource ? (
-      <Image
-        className={styles.Image}
-        source={finalSource}
-        alt=""
-        role="presentation"
-        onLoad={this.handleLoad}
-        onError={this.handleError}
-      />
-    ) : null;
+    const imageMarkUp =
+      finalSource && hasMounted ? (
+        <Image
+          className={styles.Image}
+          source={finalSource}
+          alt=""
+          role="presentation"
+          onLoad={this.handleLoad}
+          onError={this.handleError}
+        />
+      ) : null;
 
     // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
     const verticalOffset = '0.35em';
