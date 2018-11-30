@@ -555,7 +555,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
       const overlay = listNode.getBoundingClientRect();
       const viewportHeight = Math.max(
-        document.documentElement.clientHeight,
+        document.documentElement ? document.documentElement.clientHeight : 0,
         window.innerHeight || 0,
       );
 
